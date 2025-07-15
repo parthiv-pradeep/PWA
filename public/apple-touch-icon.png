@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="32" fill="#ff6b6b"/>
+  <g transform="translate(30, 30)">
+    <!-- Restaurant icon -->
+    <rect x="20" y="16" width="80" height="8" rx="4" fill="white"/>
+    <rect x="28" y="32" width="64" height="8" rx="4" fill="white"/>
+    <rect x="24" y="48" width="72" height="8" rx="4" fill="white"/>
+    <rect x="32" y="64" width="56" height="8" rx="4" fill="white"/>
+    
+    <!-- Plate -->
+    <circle cx="60" cy="96" r="20" fill="white"/>
+    <circle cx="60" cy="96" r="14" fill="#ff6b6b"/>
+    
+    <!-- Utensils -->
+    <rect x="38" y="82" width="2" height="28" fill="white"/>
+    <rect x="80" y="82" width="2" height="28" fill="white"/>
+    <ellipse cx="39" cy="80" rx="2.5" ry="1.5" fill="white"/>
+    <path d="M79 80 L83 80 L83 82 L79 82 Z" fill="white"/>
+  </g>
+</svg>
