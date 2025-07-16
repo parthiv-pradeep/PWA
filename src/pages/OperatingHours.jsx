@@ -295,8 +295,8 @@ const OperatingHours = () => {
               </span>
             </div>
             <p style={{ fontSize: '0.85rem', color: '#666', margin: 0 }}>
-              123 Culinary Street<br />
-              Flavor City, FC 12345
+              Marine Drive, Ernakulam<br />
+              Kerala, PIN: 682011
             </p>
           </div>
           
@@ -314,7 +314,7 @@ const OperatingHours = () => {
               </span>
             </div>
             <p style={{ fontSize: '0.85rem', color: '#666', margin: 0 }}>
-              (555) 123-4567
+              +91 98470 12345
             </p>
           </div>
         </div>

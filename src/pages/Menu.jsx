@@ -13,10 +13,10 @@ const Menu = () => {
       name: 'Classic Margherita Pizza',
       description: 'Fresh mozzarella, basil, and tomato sauce on our signature crust',
       detailedDescription: 'Our signature wood-fired pizza featuring the finest San Marzano tomatoes, creamy fresh mozzarella di bufala, and aromatic basil leaves. The dough is aged for 48 hours and baked in our traditional stone oven at 900°F for the perfect crispy yet chewy texture.',
-      price: '$16.99',
-      originalPrice: '$19.99',
+      price: '₹899',
+      originalPrice: '₹1099',
       discount: '15% OFF',
-      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300&h=200&fit=crop',
       category: 'Main Courses',
       rating: 4.5,
       badge: 'New Item',
@@ -30,8 +30,8 @@ const Menu = () => {
       name: 'Spicy Chicken Wings',
       description: 'Crispy wings tossed in our house-made spicy buffalo sauce',
       detailedDescription: 'Perfectly seasoned chicken wings, double-fried for maximum crispiness, then tossed in our signature buffalo sauce made with aged cayenne peppers, butter, and secret spices. Served with cooling ranch dip and celery sticks.',
-      price: '$12.99',
-      originalPrice: '$16.99',
+      price: '₹649',
+      originalPrice: '₹849',
       discount: '23% OFF',
       image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=300&h=200&fit=crop',
       category: 'Appetizers',
@@ -46,8 +46,8 @@ const Menu = () => {
       name: 'Chocolate Lava Cake',
       description: 'Warm chocolate cake with molten center, served with vanilla ice cream',
       detailedDescription: 'Decadent dark chocolate cake with a warm, flowing chocolate center that melts in your mouth. Made with premium Belgian chocolate and served with artisanal vanilla bean ice cream and fresh berries.',
-      price: '$8.99',
-      originalPrice: '$10.99',
+      price: '₹449',
+      originalPrice: '₹549',
       discount: '18% OFF',
       image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=300&h=200&fit=crop',
       category: 'Desserts',
@@ -63,8 +63,8 @@ const Menu = () => {
       name: 'Grilled Salmon',
       description: 'Fresh Atlantic salmon with herbs and seasonal vegetables',
       detailedDescription: 'Premium Atlantic salmon fillet, grilled to perfection and seasoned with fresh herbs. Accompanied by a medley of seasonal roasted vegetables and served with our signature lemon herb butter sauce.',
-      price: '$24.99',
-      originalPrice: '$29.99',
+      price: '₹1249',
+      originalPrice: '₹1499',
       discount: '17% OFF',
       image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=300&h=200&fit=crop',
       category: 'Main Courses',
@@ -79,7 +79,7 @@ const Menu = () => {
       name: 'Caesar Salad',
       description: 'Crisp romaine lettuce with parmesan, croutons and caesar dressing',
       detailedDescription: 'Fresh crisp romaine lettuce tossed in our house-made Caesar dressing, topped with aged parmesan cheese, garlic croutons, and a hint of anchovy. A classic preparation that never goes out of style.',
-      price: '$10.99',
+      price: '₹549',
       image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop',
       category: 'Appetizers',
       rating: 4.2,
@@ -93,7 +93,7 @@ const Menu = () => {
       name: 'Fresh Berry Smoothie',
       description: 'Mixed berries with yogurt and honey',
       detailedDescription: 'A refreshing blend of seasonal berries including strawberries, blueberries, and raspberries, combined with creamy Greek yogurt and natural honey. Perfectly balanced for a healthy and delicious treat.',
-      price: '$6.99',
+      price: '₹349',
       image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=300&h=200&fit=crop',
       category: 'Desserts',
       rating: 4.4,
@@ -107,8 +107,8 @@ const Menu = () => {
       name: 'Beef Burger Deluxe',
       description: 'Juicy beef patty with fresh vegetables and special sauce',
       detailedDescription: 'Our signature burger featuring a prime beef patty grilled to perfection, layered with fresh lettuce, tomato, pickles, and our secret sauce. Served on a brioche bun with crispy fries.',
-      price: '$14.99',
-      originalPrice: '$18.99',
+      price: '₹749',
+      originalPrice: '₹949',
       discount: '21% OFF',
       image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop',
       category: 'Main Courses',
@@ -123,7 +123,7 @@ const Menu = () => {
       name: 'Pasta Carbonara',
       description: 'Creamy pasta with bacon, eggs, and parmesan cheese',
       detailedDescription: 'Traditional Italian carbonara made with fresh pasta, crispy pancetta, farm-fresh eggs, and aged Parmigiano-Reggiano. A classic Roman dish prepared with authentic technique and premium ingredients.',
-      price: '$18.99',
+      price: '₹949',
       image: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=300&h=200&fit=crop',
       category: 'Main Courses',
       rating: 4.5,
@@ -140,6 +140,19 @@ const Menu = () => {
 
   return (
     <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh', paddingBottom: '100px' }}>
+      {/* Hide scrollbar styles */}
+      <style>
+        {`
+          .category-tabs::-webkit-scrollbar {
+            display: none;
+          }
+          .category-tabs {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}
+      </style>
+      
       {/* Header */}
       <div style={{ 
         backgroundColor: 'white', 
@@ -192,13 +205,16 @@ const Menu = () => {
         </div>
 
         {/* Category Tabs */}
-        <div style={{ 
-          display: 'flex',
-          gap: '0.5rem',
-          marginBottom: '1rem',
-          overflowX: 'auto',
-          paddingBottom: '5px'
-        }}>
+        <div 
+          className="category-tabs"
+          style={{ 
+            display: 'flex',
+            gap: '0.5rem',
+            marginBottom: '1rem',
+            overflowX: 'auto',
+            paddingBottom: '5px'
+          }}
+        >
           {categories.map(category => (
             <button
               key={category}
@@ -234,7 +250,7 @@ const Menu = () => {
             Deals & Benefits
           </h3>
           <p style={{ fontSize: '0.85rem', margin: 0, opacity: 0.9 }}>
-            🔥 25% OFF on orders above $50 • Free delivery on weekends
+            🔥 25% OFF on orders above ₹2500 • Free delivery on weekends
           </p>
         </div>
 

@@ -5,6 +5,7 @@ const BookSeats = () => {
   const [selectedDate, setSelectedDate] = useState(15)
   const [selectedTime, setSelectedTime] = useState('6:00 PM')
   const [partySize, setPartySize] = useState(2)
+  const [customerName, setCustomerName] = useState('')
   const [currentMonth] = useState('July 2025')
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [bookingDetails, setBookingDetails] = useState(null)
@@ -20,6 +21,12 @@ const BookSeats = () => {
   }
 
   const handleConfirmReservation = () => {
+    // Validate that name is provided
+    if (!customerName.trim()) {
+      alert('Please enter your name to confirm the reservation.')
+      return
+    }
+    
     // Generate random table number and reservation ID
     const tableNumber = Math.floor(Math.random() * 20) + 1
     const reservationId = `RES${Date.now().toString().slice(-6)}`
@@ -30,7 +37,7 @@ const BookSeats = () => {
       partySize: partySize,
       tableNumber: tableNumber,
       reservationId: reservationId,
-      customerName: "Guest", // You can add a form to collect this
+      customerName: customerName.trim(),
       dayOfWeek: getDayOfWeek(selectedDate)
     }
     
@@ -233,6 +240,47 @@ const BookSeats = () => {
           </div>
         </div>
 
+        {/* Customer Name */}
+        <div style={{ 
+          background: 'white',
+          borderRadius: '15px',
+          padding: '1.5rem',
+          boxShadow: '0 2px 15px rgba(0,0,0,0.08)',
+          marginBottom: '1.5rem'
+        }}>
+          <h3 style={{ 
+            fontSize: '1.1rem',
+            fontWeight: 'bold',
+            marginBottom: '1rem',
+            color: '#333'
+          }}>
+            Customer Name
+          </h3>
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            value={customerName}
+            onChange={(e) => setCustomerName(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '12px 16px',
+              border: '1px solid #e0e0e0',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              outline: 'none',
+              backgroundColor: 'white',
+              transition: 'border-color 0.3s',
+              boxSizing: 'border-box'
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#ff6b6b'
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#e0e0e0'
+            }}
+          />
+        </div>
+
         {/* Action Buttons */}
         <div style={{ 
           display: 'grid',
@@ -349,6 +397,12 @@ const BookSeats = () => {
             margin: 0
           }}>
             <strong>Selected:</strong> July {selectedDate}, 2025 at {selectedTime} for {partySize} {partySize === 1 ? 'person' : 'people'}
+            {customerName && (
+              <span>
+                <br />
+                <strong>Name:</strong> {customerName}
+              </span>
+            )}
           </p>
         </div>
 
@@ -458,6 +512,32 @@ const BookSeats = () => {
                     display: 'grid', 
                     gap: '0.75rem' 
                   }}>
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '0.5rem 0',
+                      borderBottom: '1px solid #e9ecef'
+                    }}>
+                      <span style={{ 
+                        fontSize: '0.9rem', 
+                        color: '#666',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                      }}>
+                        <Users size={16} />
+                        Name
+                      </span>
+                      <span style={{ 
+                        fontSize: '0.9rem', 
+                        fontWeight: '600',
+                        color: '#333'
+                      }}>
+                        {bookingDetails.customerName}
+                      </span>
+                    </div>
+                    
                     <div style={{ 
                       display: 'flex', 
                       justifyContent: 'space-between',
@@ -614,11 +694,11 @@ const BookSeats = () => {
                       if (navigator.share) {
                         navigator.share({
                           title: 'Restaurant Reservation',
-                          text: `Reservation confirmed for ${bookingDetails.date} at ${bookingDetails.time} for ${bookingDetails.partySize} people. Table ${bookingDetails.tableNumber}. ID: ${bookingDetails.reservationId}`
+                          text: `Reservation confirmed for ${bookingDetails.customerName} on ${bookingDetails.date} at ${bookingDetails.time} for ${bookingDetails.partySize} people. Table ${bookingDetails.tableNumber}. ID: ${bookingDetails.reservationId}`
                         })
                       } else {
                         // Fallback for browsers that don't support Web Share API
-                        const text = `Reservation confirmed for ${bookingDetails.date} at ${bookingDetails.time} for ${bookingDetails.partySize} people. Table ${bookingDetails.tableNumber}. ID: ${bookingDetails.reservationId}`
+                        const text = `Reservation confirmed for ${bookingDetails.customerName} on ${bookingDetails.date} at ${bookingDetails.time} for ${bookingDetails.partySize} people. Table ${bookingDetails.tableNumber}. ID: ${bookingDetails.reservationId}`
                         navigator.clipboard.writeText(text)
                         alert('Reservation details copied to clipboard!')
                       }

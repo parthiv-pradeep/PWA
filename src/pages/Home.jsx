@@ -230,10 +230,10 @@ const Home = () => {
             textAlign: 'center'
           }}>
             <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: '#666' }}>
-              123 Culinary Street, Culinary City
+              Marine Drive, Ernakulam, Kerala
             </p>
             <p style={{ fontSize: '0.9rem', marginBottom: '1rem', color: '#666' }}>
-              FC 12345
+              PIN: 682011
             </p>
             <div style={{ 
               display: 'flex', 
@@ -244,7 +244,7 @@ const Home = () => {
             }}>
               <Phone size={16} color="#ff6b6b" />
               <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#333' }}>
-                (1) 92365 93-4567
+                +91 98470 12345
               </span>
             </div>
             <p style={{ fontSize: '0.85rem', color: '#666' }}>
